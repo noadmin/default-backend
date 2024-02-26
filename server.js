@@ -6,6 +6,9 @@ app.use(express.static('content'));
 app.get('/', (req, res) => {
   res.status(404).sendFile('index.html');
 });
+app.get('/*', (req, res) => {
+  res.status(404).sendFile(__dirname + '/content/index.html');
+});
 
 app.get('/healthz', (req, res) => {
   res.send('Healthy!').end();
